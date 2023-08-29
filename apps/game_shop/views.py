@@ -9,10 +9,10 @@ class GameListCreateView(generics.ListCreateAPIView):
     queryset = Games.objects.all()
     serializer_class = GameListSerializer
     
-    @action (methods= ['Post', 'Patch'], detail=True)
+    @action (methods= ['Post'], detail=True)
     
     def get_permissions(self):
-        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+        if self.action in ['create']:
             self.permission_classes = [IsAdminPermision]
         elif self.action in ['list', 'retrieve']:
             self.permission_classes = [IsAuthenticated]
@@ -23,14 +23,11 @@ class GameRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Games.objects.all()
     serializer_class = GameListSerializer
     
-    @action (methods= ['Post', 'Patch'], detail=True)
+    @action (methods= ['Get', 'Patch', 'Delete'], detail=True)
     
     def get_permissions(self):
         if self.action in ['update', 'partial_update', 'destroy']:
             self.permission_classes = [IsAdminPermision]
-        elif self.action in ['list', 'retrieve']:
-            self.permission_classes = [IsAuthenticated]
-            
         return super().get_permissions()
     
 class CategoryListCreateView(generics.ListCreateAPIView):
