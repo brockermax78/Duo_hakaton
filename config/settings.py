@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False)
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = 'account.User'
 
 # Application definition
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     #  apps
-    'apps.account',
+    'account',
     'apps.game_shop',
     'apps.review'
 
