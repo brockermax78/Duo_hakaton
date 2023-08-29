@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils.crypto import get_random_string
@@ -17,12 +18,13 @@ class UserManeger(BaseUserManager):
 
     def create_user(self, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', False)
+        # extra_fields.setdefault('is_active', True)
         return self._create(email, password, **extra_fields)
     
     def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
-        return self._create(email, password, **extra_fields) 
+        return self._create(email, password, **extra_fields)   
 
 
 class User(AbstractBaseUser):
@@ -52,3 +54,7 @@ class User(AbstractBaseUser):
         self.activation_code = code
         self.save()
     
+    
+    
+
+
