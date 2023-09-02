@@ -1,4 +1,24 @@
 from rest_framework.serializers import ModelSerializer, ValidationError
+# <<<<<<< HEAD
+# from .models import Games, Category
+
+# class CategorySerializer(ModelSerializer):
+    
+#     class Meta:
+#         model = Category
+#         fields = ('title',)
+        
+# class GameListSerializer(ModelSerializer):
+    
+#     class Meta:
+#         model = Games
+#         fields = '__all__'
+         
+    
+        
+# =======
+
+'''код сверху закоментирован для решение конфликтов'''
 from rest_framework import serializers
 from .models import Games, Category
 # from review.models import Comment, Like, Rating
@@ -26,5 +46,4 @@ class GameListSerializer(ModelSerializer):
     #     representation['comments'] = CommentSerializer(Comment.objects.filter(post=instance.pk), many=True).data
     #     return representation 
          
-    
-    
+

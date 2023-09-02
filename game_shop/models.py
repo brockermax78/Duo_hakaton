@@ -17,6 +17,7 @@ class Category(models.Model):
             self.slug = slugify(self.title)
         super().save()
         
+        
 class Games(models.Model):
     title = models.CharField(max_length=50)
     category = models.ManyToManyField(Category)

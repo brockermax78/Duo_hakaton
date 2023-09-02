@@ -69,7 +69,4 @@ class LikeView(viewsets.ModelViewSet):
             message = 'Liked'
             status = 201
         return Response(message, status=status)
-    
-     
-        
-        
+
