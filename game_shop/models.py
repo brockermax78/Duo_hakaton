@@ -1,8 +1,8 @@
 from django.db import models
 from slugify import slugify
-# from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model
 
-# User = get_user_model()
+User = get_user_model()
 
 class Category(models.Model):
     title = models.CharField(max_length=100)
@@ -22,7 +22,8 @@ class Games(models.Model):
     category = models.ManyToManyField(Category)
     slug = models.SlugField(max_length=30, blank=True, primary_key=True)
     description = models.TextField()
-    image = models.ImageField(upload_to='/games', blank=True)
+    image = models.ImageField(upload_to='games', blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
