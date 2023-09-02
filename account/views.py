@@ -5,10 +5,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from .permission import IsActivePermission
-from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
-from django.urls import reverse_lazy
-from django.contrib.messages.views import SuccessMessageMixin
-from rest_framework import generics, status
+from rest_framework import generics, status,permissions
 from rest_framework.response import Response
 from .serializer import ForgotPasswordSerializer, ForgotPasswordCompleteSerializer
 from django.core.mail import send_mail
@@ -39,7 +36,7 @@ class RegistrationView(APIView):
         logger.info('Информационное сообщение')
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response('Аккаунт успешно создан', status=201)
+        return Response('Аккаунт успешно создан, код активации был отправлен вам на почту', status=201)
     
 
 class ActivationView(APIView):
@@ -51,7 +48,7 @@ class ActivationView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.activate()
             return Response(
-                'Аккаунт успешно активирован',
+                'Аккаунт успешно активирован, пожайлуста залогинтесь',
                 status=200
             )
 

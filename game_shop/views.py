@@ -164,3 +164,4 @@ class GameViewSet(viewsets.ModelViewSet):
             self.permission_classes = [AllowAny]
         
         return super().get_permissions()
+
