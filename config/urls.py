@@ -33,7 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('game_shop.urls')),
     path('api/v1/', include('account.urls')),
-    path('api/v1/', include('review.urls')),
+    # path('api/v1/', include('review.urls')),
     path('docs/', shema_view.with_ui('swagger'))
 ]
 

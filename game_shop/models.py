@@ -17,12 +17,13 @@ class Category(models.Model):
             self.slug = slugify(self.title)
         super().save()
         
+        
 class Games(models.Model):
     title = models.CharField(max_length=50)
     category = models.ManyToManyField(Category)
     slug = models.SlugField(max_length=30, blank=True, primary_key=True)
     description = models.TextField()
-    image = models.ImageField(upload_to='/games', blank=True)
+    image = models.ImageField(upload_to='games', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
