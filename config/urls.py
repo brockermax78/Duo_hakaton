@@ -21,6 +21,7 @@ from drf_yasg.views import get_schema_view
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 shema_view = get_schema_view(
     openapi.Info(
         title='Game_shop',
@@ -29,6 +30,7 @@ shema_view = get_schema_view(
     ),
     public=True
 )
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('game_shop.urls')),
